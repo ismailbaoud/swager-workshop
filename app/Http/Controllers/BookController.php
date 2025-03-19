@@ -38,11 +38,29 @@ class BookController extends Controller
 
 
     /**
-     * Store a newly created resource in storage.
+     * @OA\Post(
+     *      path="/api/books",
+     *      tags={"Books"},
+     *      summary="Create a new book",
+     *      description="Adds a new book to the library",
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\JsonContent(
+     *              required={"title","author"},
+     *              @OA\Property(property="title", type="string", example="Laravel for Beginners"),
+     *              @OA\Property(property="author", type="string", example="John Doe")
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=201,
+     *          description="Created"
+     *      )
+     * )
      */
     public function store(Request $request)
     {
-        //
+        $book = Book::create($request->all());
+        return response()->json($book, 201);
     }
 
     /**
