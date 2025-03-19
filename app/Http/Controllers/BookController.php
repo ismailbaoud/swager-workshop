@@ -19,12 +19,23 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @OA\Get(
+     *      path="/api/books",
+     *      tags={"Books"},
+     *      summary="Get list of books",
+     *      description="Returns a list of all books",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/Book"))
+     *      )
+     * )
      */
     public function index()
     {
-        //
+        return response()->json(Book::all(), 200);
     }
+
 
     /**
      * Store a newly created resource in storage.
