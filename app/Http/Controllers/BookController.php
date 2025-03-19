@@ -98,11 +98,49 @@ class BookController extends Controller
 
 
     /**
-     * Update the specified resource in storage.
+     * @OA\Put(
+     *      path="/api/books/{id}",
+     *      tags={"Books"},
+     *      summary="Update an existing book",
+     *      description="Updates details of a book",
+     *      @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          description="ID of the book to update",
+     *          @OA\Schema(type="integer")
+     *      ),
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\JsonContent(
+     *              @OA\Property(property="title", type="string", example="Updated Book Title"),
+     *              @OA\Property(property="author", type="string", example="Updated Author Name")
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Book updated successfully"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Book not found"
+     *      )
+     * )
      */
-    public function update(Request $request, book $book)
+    public function update(Request $request, $id)
     {
-        //
+        $book = Book::find($id);
+        if (!$book) {
+            return response()->json(['message' => 'Book not found'], 404);
+        }
+
+        $request->validate([
+            'title' => 'sometimes|string|max:255',
+            'author' => 'sometimes|string|max:255',
+        ]);
+
+        $book->update($request->all());
+        return response()->json($book, 200);
     }
 
     /**
