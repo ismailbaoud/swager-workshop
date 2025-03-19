@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\book;
+use App\Models\Book;
 use Illuminate\Http\Request;
 /**
  * @OA\Info(
@@ -142,7 +142,7 @@ class BookController extends Controller
         $book->update($request->all());
         return response()->json($book, 200);
     }
-    
+
     /**
      * @OA\Delete(
      *      path="/api/books/{id}",
