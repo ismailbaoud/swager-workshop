@@ -142,12 +142,38 @@ class BookController extends Controller
         $book->update($request->all());
         return response()->json($book, 200);
     }
-
+    
     /**
-     * Remove the specified resource from storage.
+     * @OA\Delete(
+     *      path="/api/books/{id}",
+     *      tags={"Books"},
+     *      summary="Delete a book",
+     *      description="Deletes a book from the library",
+     *      @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          description="ID of the book to delete",
+     *          @OA\Schema(type="integer")
+     *      ),
+     *      @OA\Response(
+     *          response=204,
+     *          description="Book deleted successfully"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Book not found"
+     *      )
+     * )
      */
-    public function destroy(book $book)
+    public function destroy($id)
     {
-        //
+        $book = Book::find($id);
+        if (!$book) {
+            return response()->json(['message' => 'Book not found'], 404);
+        }
+
+        $book->delete();
+        return response()->json(null, 204);
     }
 }
