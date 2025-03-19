@@ -6,14 +6,14 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/api/books": {
+        "/books": {
             "get": {
                 "tags": [
                     "Books"
                 ],
                 "summary": "Get list of books",
                 "description": "Returns a list of all books",
-                "operationId": "a9d13283dfab262e97af3c914d51b7a8",
+                "operationId": "28b9632495ac5f6f66b2e52001d510e6",
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -36,7 +36,7 @@
                 ],
                 "summary": "Create a new book",
                 "description": "Adds a new book to the library",
-                "operationId": "47047e95a700b3271b697e57d0965191",
+                "operationId": "b10f5fe35eefa47e974dd4b333d870b1",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -68,14 +68,14 @@
                 }
             }
         },
-        "/api/books/{id}": {
+        "/books/{id}": {
             "get": {
                 "tags": [
                     "Books"
                 ],
                 "summary": "Get a specific book",
                 "description": "Retrieve details of a book by ID",
-                "operationId": "2fdd668eb661591758aff4c56ca9b66a",
+                "operationId": "e94109dcb4f4d40b58a210b43d94016d",
                 "parameters": [
                     {
                         "name": "id",
@@ -109,7 +109,7 @@
                 ],
                 "summary": "Update an existing book",
                 "description": "Updates details of a book",
-                "operationId": "f5ca658c501a803d68655af0365e3802",
+                "operationId": "7430c1078c3cb5da552b2fd50409f8ea",
                 "parameters": [
                     {
                         "name": "id",
@@ -156,7 +156,7 @@
                 ],
                 "summary": "Delete a book",
                 "description": "Deletes a book from the library",
-                "operationId": "1a9c26667c32b8ed5e5770d7a1cc9d5c",
+                "operationId": "41c44a46960ad1a921ba5bfbf16ea7b8",
                 "parameters": [
                     {
                         "name": "id",

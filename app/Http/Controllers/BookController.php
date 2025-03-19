@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Http\Request;
 /**
+ * @OA\PathItem(path="/api")
+ */
+
+/**
  * @OA\Info(
  *      title="book API",
  *      version="1.0.0",
@@ -20,7 +24,7 @@ class BookController extends Controller
 {
     /**
      * @OA\Get(
-     *      path="/api/books",
+     *      path="/books",
      *      tags={"Books"},
      *      summary="Get list of books",
      *      description="Returns a list of all books",
@@ -39,7 +43,7 @@ class BookController extends Controller
 
     /**
      * @OA\Post(
-     *      path="/api/books",
+     *      path="/books",
      *      tags={"Books"},
      *      summary="Create a new book",
      *      description="Adds a new book to the library",
@@ -65,7 +69,7 @@ class BookController extends Controller
 
  /**
      * @OA\Get(
-     *      path="/api/books/{id}",
+     *      path="/books/{id}",
      *      tags={"Books"},
      *      summary="Get a specific book",
      *      description="Retrieve details of a book by ID",
@@ -99,7 +103,7 @@ class BookController extends Controller
 
     /**
      * @OA\Put(
-     *      path="/api/books/{id}",
+     *      path="/books/{id}",
      *      tags={"Books"},
      *      summary="Update an existing book",
      *      description="Updates details of a book",
@@ -145,7 +149,7 @@ class BookController extends Controller
 
     /**
      * @OA\Delete(
-     *      path="/api/books/{id}",
+     *      path="/books/{id}",
      *      tags={"Books"},
      *      summary="Delete a book",
      *      description="Deletes a book from the library",

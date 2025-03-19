@@ -5,7 +5,7 @@ return [
     'documentations' => [
         'default' => [
             'api' => [
-                'title' => 'book API',
+                'title' => 'Library Management API',
                 'version' => '1.0.0',
             ],
 
