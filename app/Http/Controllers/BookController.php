@@ -4,7 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\book;
 use Illuminate\Http\Request;
-
+/**
+ * @OA\Info(
+ *      title="book API",
+ *      version="1.0.0",
+ *      description="API documentation for managing books in the library"
+ * )
+ * 
+ * @OA\Tag(
+ *     name="Books",
+ *     description="API Endpoints for managing books"
+ * )
+ */
 class BookController extends Controller
 {
     /**
