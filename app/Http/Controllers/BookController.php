@@ -63,13 +63,39 @@ class BookController extends Controller
         return response()->json($book, 201);
     }
 
-    /**
-     * Display the specified resource.
+ /**
+     * @OA\Get(
+     *      path="/api/books/{id}",
+     *      tags={"Books"},
+     *      summary="Get a specific book",
+     *      description="Retrieve details of a book by ID",
+     *      @OA\Parameter(
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          description="ID of the book",
+     *          @OA\Schema(type="integer")
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success",
+     *          @OA\JsonContent(ref="#/components/schemas/Book")
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Book not found"
+     *      )
+     * )
      */
-    public function show(book $book)
+    public function show($id)
     {
-        //
+        $book = Book::find($id);
+        if (!$book) {
+            return response()->json(['message' => 'Book not found'], 404);
+        }
+        return response()->json($book, 200);
     }
+
 
     /**
      * Update the specified resource in storage.
